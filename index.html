@@ -1,58 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Open Instagram Test</title>
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Open app test</title> 
     <style>
-        body {
+        .container {
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: sans-serif;
-            background-color: #fafafa;
+            padding: 50px;
         }
         .btn-open {
-            background-color: #0095f6;
+            padding: 10px 20px;
+            background-color: #E1306C; /* Instagram Pink */
             color: white;
-            padding: 12px 24px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            display: inline-block;
-            border: none;
-            cursor: pointer;
+            border-radius: 5px;
+            font-family: sans-serif;
         }
     </style>
 </head>
-<body>
+<body> 
 
-    <div class="container">
-        <a href="#" id="open-button" class="btn-open">Open Instagram</a>
-    </div>
-
-    <script>
-        document.getElementById('open-button').addEventListener('click', function(e) {
-            e.preventDefault(); // Stop the browser from just following the '#' link
-
-            const appUri = "instagram://app";
-            const playStoreUrl = "https://play.google.com/store/apps/details?id=com.instagram.android";
-            
-            // 1. Try to open the app directly
-            window.location.href = appUri;
-
-            // 2. Set a timer to check if the user is still on this page
-            // If the app opens, the browser "pauses" this page.
-            // If it doesn't open, this timer will fire after 500ms.
-            setTimeout(function() {
-                if (!document.hidden) {
-                    window.location.href = playStoreUrl;
-                }
-            }, 500);
-        });
-    </script>
+    <div class="container"> 
+        <a href="https://www.instagram.com/" class="btn-open">Open Instagram</a> 
+    </div> 
 
 </body>
 </html>
