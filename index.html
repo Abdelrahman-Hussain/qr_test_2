@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Launch Instagram</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; background: #fff; }
+        .btn { background: #000; color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 20px; cursor: pointer; border: none; }
+    </style>
+</head>
+<body>
+
+    <button class="btn" onclick="openApp()">OPEN INSTAGRAM</button>
+
+    <script>
+        function openApp() {
+            // Android: Pure Intent to launch the app package directly
+            const androidIntent = "intent:#Intent;package=com.instagram.android;scheme=https;end";
+            
+            // iOS: Simple app protocol
+            const iosScheme = "instagram://";
+
+            // Fallback: If app isn't found, go to the website
+            const webFallback = "https://www.instagram.com/";
+
+            if (/Android/i.test(navigator.userAgent)) {
+                window.location.href = androidIntent;
+            } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                window.location.href = iosScheme;
+            } else {
+                window.location.href = webFallback;
+            }
+
+            // If still on this page after 1 second, go to web
+            setTimeout(() => {
+                if (!document.hidden) { window.location.href = webFallback; }
+            }, 1000);
+        }
+
+        // Try to auto-open as soon as the page loads
+        window.onload = openApp;
+    </script>
+</body>
+</html>
